@@ -1,6 +1,9 @@
+#include <bits/stdc++.h>
+
 #include <iostream>
 using namespace std;
 #include<vector>
+#include<unordered_map>
 class Solution {
 public:
  bool helper(vector<int>&count , vector<int>& quantity , int ithcustomer ){
