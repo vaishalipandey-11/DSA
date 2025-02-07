@@ -3,7 +3,7 @@
 using namespace std;
 
 int fastExponentiation(int x, int n)
-{
+{ int M = 1;
     long long int ans = 1;
 
     while (n > 0)

@@ -1,4 +1,7 @@
 // M1
+#include<iostream>
+using namespace std;
+#include<vector>
 class Solution
 {
 public:
@@ -27,6 +30,7 @@ public:
 };
 
 // M2
+
 class Solution
 {
 public:
@@ -60,7 +64,7 @@ class Solution
 public:
     int countPrimes(int n)
     {
-        vector<bool> prime(n + 1, true);
+        vector<bool>prime(n + 1, true);
         prime[0] = prime[1] = false;
         int ans = 0;
 
