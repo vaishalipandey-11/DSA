@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+#include <iostream>
+using namespace std;
 class Solution {
 public:
     // helper linear search function 
@@ -11,6 +14,7 @@ public:
     }
     int longestConsecutive(vector<int>& nums) {
         int n = nums.size();
+        if(n==0) return 0;
          int largest =0;
         // here we will take 2 var lag and count too track
         for(int i =0 ; i<n ; i++){
@@ -25,5 +29,33 @@ public:
             largest = max(largest,count);
         }
         return largest;
+    }
+};
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        int n =nums.size();
+        //edge case of empty array
+        if(n==0) return 0;
+        // var needed
+        int end = INT_MIN;
+        int count =0;
+        int longestcoseq = 1;
+        //sort array 
+        sort(nums.begin(), nums.end());
+        //iterate 
+        for(int i=0 ; i<n ;i++){
+            //check last elem is the end or not
+            if(nums[i]-1 == end){
+                count++;
+                end=nums[i];
+            }else if(nums[i] != end){
+                count=1;
+                end = nums[i];
+            }
+             longestcoseq = max(count , longestcoseq);
+        }
+        return longestcoseq;
+        
     }
 };
