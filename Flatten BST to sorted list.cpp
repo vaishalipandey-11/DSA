@@ -57,6 +57,33 @@ public:
     }
 };
 
+//Approach-2
+//T.C : O(n)
+//S.C : Auxiliary Space is O(1) and Stack Space due to recursion is O(n)
+class Solution {
+public:
+    Node* prev = NULL;
+    
+    Node* flattenBST(Node* root) {
+        if (!root) return NULL;
+        
+        Node* head = flattenBST(root->left); // Flatten left subtree
 
-//{ Driver Code Starts.
+        if (prev) {
+            prev->right = root;
+        } else {
+            head = root; // Set head only once (first node in in-order traversal)
+        }
+        
+        prev = root;
+        root->left = NULL;  // Remove left link
+        
+        flattenBST(root->right); // Flatten right subtree
+        
+        return head;
+    }
+};
+
+
+
 
