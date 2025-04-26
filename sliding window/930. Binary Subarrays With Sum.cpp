@@ -3,6 +3,9 @@
 using namespace std;
 class Solution {
 public:
+    //Approach-1 (Simple prefix sum) - These kind of Qns can always be solved using Map and cumulative sum technique
+    //T.C : O(n)
+    //S.C : O(n)
     int numSubarraysWithSum(vector<int>& nums, int goal) {
         int n = nums.size();
         
