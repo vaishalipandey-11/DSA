@@ -34,3 +34,58 @@ int maxsteps;
         return maxsteps;
     }
 };
+//Approach-2 (Keeping track of left and right count)
+class Solution {
+public:
+    int maxPath = 0;
+    
+    void solve(TreeNode* root, int left, int right) {
+        if(!root)
+            return;
+        
+                
+        maxPath = max({maxPath, left, right});
+        
+        
+        solve(root->left, right+1, 0);
+        solve(root->right, 0, left+1);
+        
+    }
+    
+    int longestZigZag(TreeNode* root) {
+        
+        solve(root, 0, 0);
+        
+        return maxPath;
+        
+    }
+};
+
+
+//Approach-3 (Returning pair of left and right length)
+class Solution {
+public:
+    
+    int maxPath = 0;
+    
+    vector<int> solve(TreeNode* root) {
+        if(root == NULL)
+            return {0, 0};
+        
+        vector<int> reL = solve(root->left);
+        vector<int> reR = solve(root->right);
+        
+        int L = reL[0];
+        int R = reR[1];
+        
+        maxPath = max({maxPath, L, R});
+        
+        return {R+1, L+1};
+    
+    }
+    
+    int longestZigZag(TreeNode* root) {
+        solve(root);
+        return maxPath;
+    }
+};
