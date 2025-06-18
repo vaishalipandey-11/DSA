@@ -61,7 +61,7 @@ public:
     }
 };
 
-
+#include <vector>
 //Approach-3 (Returning pair of left and right length)
 class Solution {
 public:
