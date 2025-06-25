@@ -40,3 +40,38 @@ public:
         
     }
 };
+
+
+class Solution {
+public:
+    int result ;
+    pair<int,int> solve(TreeNode* root){ // using dfs .. sum fromchild 
+       if(!root) return {0,0};
+
+       auto l = solve(root->left);
+       auto r = solve(root->right);
+
+       int leftsum = l.first ;
+       int leftcount = l.second;
+
+       int rightsum = r.first ;
+       int rightcount =r.second;
+
+       int Sum =leftsum + rightsum + root->val;
+       int count = leftcount + rightcount + 1;
+
+       int avg = Sum/count ;
+
+       if(avg == root->val){
+        result ++;
+       }
+
+     return {Sum , count };
+         
+    }
+    int averageOfSubtree(TreeNode* root) {
+        result =0;
+        solve(root);
+        return result ;
+    }
+};
