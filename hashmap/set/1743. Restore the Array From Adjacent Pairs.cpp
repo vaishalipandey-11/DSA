@@ -46,3 +46,13 @@ public:
 
     }
 };
+//tc is 0(n)+0(n) + 0(n) = 0(n)
+//sc is 0(n) for adj and visited and result
+// so overall tc is 0(n) and sc is 0(n)
+// this is a simple graph traversal problem where we are building the array from the adjacent pairs
+// we are using a map to store the adjacency list and a set to keep track of visited
+// we are starting from the node that has only one neighbor and then traversing the graph to build the array
+// this is a simple graph traversal problem where we are building the array from the adjacent pairs
+// we are using a map to store the adjacency list and a set to keep track of visited nodes
+// we are starting from the node that has only one neighbor and then traversing the graph to build the array
+// this is a simple graph traversal problem where we are building the       
