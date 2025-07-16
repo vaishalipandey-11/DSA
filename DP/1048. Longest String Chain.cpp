@@ -47,10 +47,6 @@ public:
 //this is a dp solution with memoization
 //tc: O(n^2) , sc: O(n^2)
 #include <cstring>
-#include <vector>
-#include <string>
-#include <algorithm>
-using namespace std;
 class Solution {
 public:
     int dp[1001][1001];
@@ -97,5 +93,45 @@ public:
         sort(words.begin(), words.end(), myfunction);
         memset(dp, -1, sizeof(dp));
         return lis(words, -1, 0);
+    }
+};
+
+//now bottom-up dp solution
+ //tc: O(n^2) , sc: O(n)
+class Solution {
+public:
+    bool predecessor(string& prev, string& curr) {
+        int n = prev.length();
+        int m = curr.length();
+        if (n >= m || m - n != 1)
+            return false;
+        int i = 0, j = 0;
+        while (i < n && j < m) {
+            if (prev[i] == curr[j]) {
+                i++;
+            }
+            j++;
+        }
+        return i == n;
+    }
+    static bool myfunction(string& a, string& b) {
+        return a.length() < b.length();
+    }
+    int longestStrChain(vector<string>& words) {
+        sort(words.begin(), words.end(), myfunction);
+        int n = words.size();
+        vector<int> dp(n, 1);
+        int maxlen = 1;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+
+                if (predecessor(words[j], words[i])) {
+                    dp[i] = max(dp[i], dp[j] + 1);
+                    maxlen = max(maxlen, dp[i]);
+                }
+            }
+        }
+        return maxlen;
     }
 };
