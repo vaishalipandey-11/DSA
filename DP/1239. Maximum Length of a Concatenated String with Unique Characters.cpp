@@ -1,9 +1,5 @@
-#include <vector>
-#include <string>
-#include <cstring>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
-#include <limits.h>
 class Solution {
 public:
 int n ;
