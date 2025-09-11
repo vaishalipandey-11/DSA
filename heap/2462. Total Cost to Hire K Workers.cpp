@@ -1,3 +1,7 @@
+
+ #include<iostream>
+ #include<bits/stdc++.h>
+ using namespace std;
 class Solution {
 public:
     long long totalCost(vector<int>& costs, int k, int candidates) {
