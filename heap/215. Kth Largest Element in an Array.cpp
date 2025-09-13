@@ -17,3 +17,22 @@ public:
          return min_heap.top();
     }
 };
+
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+         priority_queue<int, vector<int> , greater<int>> min_heap;
+         int n = nums.size();
+         for(auto it : nums){
+            if(min_heap.size()<k){
+                min_heap.push(it);
+            }else if(min_heap.top() < it){
+                min_heap.pop();
+                min_heap.push(it);
+            }
+         }
+
+         
+         return min_heap.top();
+    }
+};
