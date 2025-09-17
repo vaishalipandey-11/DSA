@@ -2,7 +2,7 @@
  #include<iostream>
  #include<bits/stdc++.h>
  using namespace std;
- 
+
 class Solution {
 
 public:
@@ -29,5 +29,43 @@ public:
             }
         }
         return result ;
+    }
+};
+
+
+class Solution { 
+public:
+     typedef pair<int,int> p;
+     const int MOD = 1e9 +7;
+    int rangeSum(vector<int>& nums, int n, int left, int right) {
+        
+        priority_queue<p, vector<p> , greater<p>> min_heap;
+
+        for(int i=0 ; i<n ; i++){
+            min_heap.push({nums[i], i});
+        }
+      
+        int count =0;
+        int result = 0;
+        while(!min_heap.empty() && count < right){
+            auto [sum,idx] = min_heap.top();
+            min_heap.pop();
+            count ++;
+
+            if(count >= left ){
+                result = (result + sum)%MOD;
+                
+            }
+
+            if(idx+1 < n){
+                min_heap.push({sum+nums[idx+1], idx+1});
+            }
+
+        }
+   
+
+        return result ;
+
+
     }
 };
