@@ -40,3 +40,43 @@ public:
 
     }
 };
+class CustomStack {
+public:
+    int n;
+    vector<int> vec;
+    vector<int> lazy;
+    CustomStack(int maxSize) {
+        n = maxSize;
+        vec.resize(n, 0);
+        lazy.resize(n, 0);
+    }
+    int top = -1;
+    int count = 0;
+
+    void push(int x) {
+        if (count < n) {
+            top++;
+            vec[top] = x;
+            count++;
+        }
+    }
+
+    int pop() {
+        if(count ==0 ) return -1;
+        int val = vec[top] + lazy[top];
+
+        if(top !=0) lazy[top-1] += lazy[top];
+         lazy[top]=0;
+         top--;
+        count--;
+            
+       
+        return val;
+    }
+
+    void increment(int k, int val) {
+        if(count ==0) return ;
+        int total = min(k-1 , top);
+        lazy[total ] +=val;
+    }
+};
